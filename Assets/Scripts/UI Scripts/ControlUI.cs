@@ -23,6 +23,10 @@ public class ControlUI : MonoBehaviour
     {
         Application.Quit();
     }
+    public void opunURl(string link)
+    {
+        Application.OpenURL(link);
+    }
 }
 
 
