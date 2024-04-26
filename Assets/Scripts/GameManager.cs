@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public GameObject pplayer;
     public GameObject ground;
     public GameObject Menudid;
+    public GameObject soundManager;
+    public Sound soundEffict;
 
     public GameObject playButton;
     
@@ -64,6 +66,7 @@ public class GameManager : MonoBehaviour
 
         gameOver.SetActive(false);
         playButton.SetActive(false);
+        soundManager.SetActive(true);
 
 
 
@@ -79,16 +82,22 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    public void sound()
+    {
+        
+        soundManager.SetActive(false);
+        Debug.Log("test");
+    }
     public void GameOver()
     {
         gameOver.SetActive(true);
-        //playButton.SetActive(true);
         Menudid.SetActive(true);
         player.enabled = false;
         spawner.enabled = false;
         moveGround.enabled = false;
         did.enabled = true;
         test();
+        Invoke("sound", 0.27f);
     }
 
         public void IncreaseScore()

@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
 {
-    
+    public Sound soundEffict;
+    public GameObject soundManager;
 
     private int spriteIndex;
     public Sprite[] sprites;
@@ -19,7 +20,7 @@ public class PlayerJump : MonoBehaviour
 
     private Rigidbody2D rb;
 
-
+   
 
 
     private void Awake()
@@ -104,16 +105,22 @@ public class PlayerJump : MonoBehaviour
     {
         if (other.gameObject.tag == "Did")
         {
+           
             FindObjectOfType<GameManager>().GameOver();
+            
+
         }
         else if (other.gameObject.tag == "Score")
         {
             FindObjectOfType<GameManager>().IncreaseScore();
+            
+            
         }
         else if (other.gameObject.tag == "pipes")
         {
+            
             FindObjectOfType<GameManager>().GameOver();
-
+            
         }
         else if (other.gameObject.CompareTag("Ground"))
         {
