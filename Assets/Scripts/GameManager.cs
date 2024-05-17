@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
     {
         
         soundManager.SetActive(false);
-        Debug.Log("test");
+        
     }
     public void GameOver()
     {
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         spawner.enabled = false;
         moveGround.enabled = false;
         did.enabled = true;
-        test();
+        stopPipes();
         Invoke("sound", 0.27f);
     }
 
@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        public void test()
+        public void stopPipes()
         {
 
        

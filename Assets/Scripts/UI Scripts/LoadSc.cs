@@ -12,7 +12,7 @@ public class LoadSc : MonoBehaviour
     void Start()
     {
         AnimateBar();
-        Invoke("LoadNextScene", 1.5f);
+        Invoke("LoadNextScene", 2f);
     }
 
     // Update is called once per frame
