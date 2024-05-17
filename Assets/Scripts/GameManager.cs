@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public int score = 0;
     public int highscore= 0;
 
+    private string highscoreKey = "HighScore";
+
 
     public PlayerJump player;
     public Spawner spawner;
@@ -34,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     public void Awake()
     {
+        highscore=PlayerPrefs.GetInt(highscoreKey,0);
         Application.targetFrameRate = 60;
         gameOver.gameObject.SetActive(false);
         did.enabled = false;
@@ -50,6 +53,8 @@ public class GameManager : MonoBehaviour
     }
     public void play()
     {
+        
+       // score=PlayerPrefs.GetInt("Score", 0);
         score = 0;
         Score.text = score.ToString();
         UpdateUI();
@@ -99,6 +104,11 @@ public class GameManager : MonoBehaviour
         stopPipes();
         Invoke("sound", 0.27f);
     }
+    public void SaveHighScore()
+    {
+        PlayerPrefs.SetInt(highscoreKey, highscore);
+        PlayerPrefs.Save();
+    }
 
         public void IncreaseScore()
         {
@@ -107,6 +117,8 @@ public class GameManager : MonoBehaviour
         if (score > highscore)
         {
             highscore = score;
+            SaveHighScore();
+            
         }
         // ÊÍÏíË ÚÑÖ ÇáÓßæÑ
         UpdateUI();
@@ -119,9 +131,13 @@ public class GameManager : MonoBehaviour
         
         HighScore.text = "" + highscore;
         }
+    public void OnApplicationQuit()
+    {
+        SaveHighScore(); // ÍİÙ ÃÚáì ÓßæÑ ÚäÏ ÇáÎÑæÌ ãä ÇááÚÈÉ
+    }
 
 
-        public void stopPipes()
+    public void stopPipes()
         {
 
        
